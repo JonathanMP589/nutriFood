@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { BrowserRouter } from "react-router-dom";
+import "/node_modules/primeflex/primeflex.css"
 import reportWebVitals from './reportWebVitals';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import { Nutrifoot } from './Nutrifoot';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Nutrifoot />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
