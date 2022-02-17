@@ -22,20 +22,30 @@ export const Landing = () => {
     }
 
     return (
-        <div class="flex flex-column">
-            <div class="flex justify-content-end">
-                <Button label="Iniciar sesión" onClick={() => goToLogin()} className="p-button-text p-button-rounded p-button-secondary p-button-raised" />
-            </div>
-            <div class="flex justify-content-center">
-                <h1>Nutrifood</h1>
-            </div>
-            <div class="flex flex-column align-items-center justify-content-center">
-                <h2 class="text-center">¡Aprende sobre las frutas y verduras y cómo </h2>
-                <h2 class="text-center"> escogerlas para comer bien y vivir genial!</h2>
-            </div>
-            <div class="flex flex-row align-items-center justify-content-center">
-                <Button label="Accede gratis" onClick={() => goToRegister()} className="mr-8 p-button-rounded p-button-success p-button-raised" />
-                <Button label="Ver videos" style={{ background: "orange" }} className="p-button-rounded  p-button-raised" />
+        <div style={
+            {
+                height: '100vh', 
+                backgroundImage: 'url("/assets/Landing_Page_Wallpaper.png")',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover'
+                
+            }
+            }>
+            <div className="flex flex-column">
+                <div className="flex justify-content-end">
+                    <Button label="Iniciar sesión" onClick={() => goToLogin()} className="m-2 p-button-text p-button-rounded p-button-secondary p-button-raised text-white " />
+                </div>
+                <div className="flex justify-content-center mt-4">
+                    <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" />
+                </div>
+                <div className="flex flex-column align-items-center justify-content-center text-white">
+                    <h2 className="text-center">¡Aprende sobre las frutas y verduras y cómo </h2>
+                    <h2 className="text-center"> escogerlas para comer bien y vivir genial!</h2>
+                </div>
+                <div className="flex flex-row align-items-center justify-content-center">
+                    <Button label="Accede gratis" onClick={() => goToRegister()} className="mr-8 p-button-rounded p-button-success p-button-raised" />
+                    <Button label="Ver videos" style={{ background: "orange" }} className="p-button-rounded  p-button-raised" />
+                </div>
             </div>
         </div>
     )
