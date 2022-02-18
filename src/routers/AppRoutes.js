@@ -6,9 +6,9 @@ import {
 import { Home } from "../components/Home";
 import { Landing } from "../components/Landing";
 import { Login } from "../components/Login";
-import { Step1 } from "../components/recopilacionDatos/Step1";
-import { Step2 } from "../components/recopilacionDatos/Step2";
-import { Step3 } from "../components/recopilacionDatos/Step3";
+import { Step1 } from "../components/recopilacionDatos/step1";
+import { Step2 } from "../components/recopilacionDatos/step2";
+import { Step3 } from "../components/recopilacionDatos/step3";
 import { Registro } from "../components/Registro";
 import { Welcome } from "../components/Welcome";
 import ProtectedRoute from "./ProtectedRoute";
