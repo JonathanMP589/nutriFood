@@ -27,11 +27,11 @@ export const Registro = () => {
                 backgroundImage: 'url("/assets/Registro_Wallpaper.png")',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
-                
+
             }
-            }>
+        }>
             <div className='col-12 px-3'>
-                <Card className='m-5 text-center md:col-5 sm:col-12' style={{ borderRadius: '5%' }}>
+                <Card className='fadeinleft animation-duration-1000 m-5 text-center shadow-8 opacity-80 md:col-5 sm:col-12' style={{ borderRadius: '5%' }}>
                     <div className='flex'>
                         <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-6 m-auto sm:col-12' />
                     </div>
@@ -47,7 +47,7 @@ export const Registro = () => {
 
                 </Card>
             </div>
-            
+
         </div>
     )
 }

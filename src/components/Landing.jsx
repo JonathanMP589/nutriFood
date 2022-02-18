@@ -24,19 +24,20 @@ export const Landing = () => {
     return (
         <div style={
             {
-                height: '100vh', 
-                backgroundImage: 'url("/assets/Landing_Page_Wallpaper.png")',
+                height: '100vh',
+                width: '100%',
+                overflow: "hidden",
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover'
-                
+                backgroundSize: 'cover',
+                backgroundImage: 'url("/assets/Landing_Page_Wallpaper.png")',
             }
-            }>
+        }>
             <div className="flex flex-column">
                 <div className="flex justify-content-end">
                     <Button label="Iniciar sesión" onClick={() => goToLogin()} className="m-2 p-button-text p-button-rounded p-button-secondary p-button-raised text-white " />
                 </div>
                 <div className="flex justify-content-center mt-4">
-                    <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" />
+                    <img src="/assets/Logotipo.png" alt="Logo de iniciar sesión" />
                 </div>
                 <div className="flex flex-column align-items-center justify-content-center text-white">
                     <h2 className="text-center">¡Aprende sobre las frutas y verduras y cómo </h2>

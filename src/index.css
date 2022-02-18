@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.p-password input {
+    width: 100%;
+}
+
+.toast-login button {
+    min-width: 10rem;
+    margin-right: .5rem;
+}
+
+@media screen and (max-width: 960px) {
+    .toast-login button {
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+}
