@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
-import { InputText } from 'primereact/inputtext';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
+import { Controller, useForm } from 'react-hook-form';
+import { MultiSelect } from 'primereact/multiselect';
 
 export const Step3 = () => {
 
-    const [enfermedad, setEnfermedad] = useState();
-
     const navigate = useNavigate();
 
-    const goToHome = () => {
-        navigate('/home');
+    const enfermedadesItems = [
+        { label: 'Ninguna', value: 'Ninguna' },
+        { label: 'Diabetes', value: 'Diabetes' },
+        { label: 'Hepatitis A', value: 'Hepatitis A' },
+        { label: 'Colesterol', value: 'Colesterol' },
+        { label: 'Cetonas', value: 'Cetonas' },
+    ];
+
+    const goToStep3DataCollection = (e) => {
+        console.log(e);
+        navigate('/Home');
+    };
+
+    const { control, formState: { errors }, handleSubmit, } = useForm();
+
+    const getFormErrorMessage = (name) => {
+        return errors[name] && <small className='p-error mb-3'>{errors[name].message}</small>
     };
 
     return (
-        <div className='h-screen w-screen relative text-center'
+        <div className='h-screen w-screen '
             style={
                 {
                     backgroundImage: 'url("/assets/Datos_wallpaper.png")',
@@ -23,18 +36,30 @@ export const Step3 = () => {
                     backgroundSize: 'cover'
                 }}>
 
-            <div className='col-12 px-3'>
-                <Card className='absolute m-5 text-center md:col-6 sm:col-12' style={{ borderRadius: '5%', right: '5%' }}>
-                    <h2 className='text-green-500'>Pregunta 2/2</h2>
-                    <form className="flex flex-column p-3">
-                        <InputText className='mb-5 md-5' placeholder='¿Padeces de algunas de estas enfermedades?' value={enfermedad} onChange={(e) => setEnfermedad(e.target.value)} />
-                    </form>
-                    <Button label="Finalizar" onClick={goToHome} className="p-button-rounded p-button-success p-button-raised" />
-
-                </Card>
+            <div className='flex'>
+                <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-2 absolute left-0 m-4' />
+                <div className=' flex flex-wrap md:justify-content-evenly justify-content-center align-items-center row md:mt-8 mt-7 md:w-11 w-12'>
+                    <img className='w-4' src="/assets/Datos_titulo_1.png" alt="Datos" />
+                    <Card className=' md:w-6 w-11' style={{ borderRadius: '5%' }} >
+                        <h2 className='text-green-500 text-center'>Pregunta 2/2</h2>
+                        <form className="flex flex-column p-3 sm:col-12" onSubmit={handleSubmit(goToStep3DataCollection)}>
+                            <Controller name='enfermedades' control={control} rules={{ required: 'Las enfermedades son requeridas' }}
+                                render={({ field, fieldState }) => (
+                                    <MultiSelect
+                                        optionLabel="label"
+                                        className={fieldState.invalid ? 'md-5 p-invalid' : 'mb-5 md-5'}
+                                        placeholder='¿Padeces alguna de estas enfermedades?'
+                                        options={enfermedadesItems}
+                                        value={field.value}
+                                        onChange={(e) => field.onChange(e.value)} />
+                                )} />
+                            {getFormErrorMessage("enfermedades")}
+                            <Button label="Registrarte" type='submit' className="p-button-rounded p-button-success p-button-raised" />
+                        </form>
+                    </Card>
+                </div>
             </div>
-            <img className='md:absolute w-4 md:left-0 sm:col-12 sm:absolute' src="/assets/Datos_titulo_2.png" alt="Datos" style={{ top: '20%' }} />
 
         </div>
     )
-};
+}
