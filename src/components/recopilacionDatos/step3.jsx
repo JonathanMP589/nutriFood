@@ -41,7 +41,7 @@ export const Step3 = () => {
                 <div className=' flex flex-wrap md:justify-content-evenly justify-content-center align-items-center row md:mt-8 mt-7 md:w-11 w-12'>
                     <img className='w-4' src="/assets/Datos_titulo_1.png" alt="Datos" />
                     <Card className=' md:w-6 w-11' style={{ borderRadius: '5%' }} >
-                        <h2 className='text-green-500 text-center'>Pregunta 2/2</h2>
+                        <h2 className='text-center' style={{ color: "#43b06f" }}>Pregunta 2/2</h2>
                         <form className="flex flex-column p-3 sm:col-12" onSubmit={handleSubmit(goToStep3DataCollection)}>
                             <Controller name='enfermedades' control={control} rules={{ required: 'Las enfermedades son requeridas' }}
                                 render={({ field, fieldState }) => (
@@ -54,7 +54,9 @@ export const Step3 = () => {
                                         onChange={(e) => field.onChange(e.value)} />
                                 )} />
                             {getFormErrorMessage("enfermedades")}
-                            <Button label="Registrarte" type='submit' className="p-button-rounded p-button-success p-button-raised" />
+                            <div className='flex justify-content-center align-items-center'>
+                                <Button label="Finalizar" type='submit' style={{ background: "#43b06f" }} className="p-button-rounded md:w-4 w-6 p-button-raised" />
+                            </div>
                         </form>
                     </Card>
                 </div>

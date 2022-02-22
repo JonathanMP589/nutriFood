@@ -27,7 +27,7 @@ export const Welcome = () => {
                         La webapp que te enseñará... Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam assumenda, necessitatibus odit deleniti nisi quae voluptates omnis, optio facere culpa reiciendis est eos adipisci. Eius tempora veritatis voluptas voluptatem! Corporis?
                     </p>
                 </div>
-                <Button label="Comenzar" onClick={() => goToStep1DataCollection()} className="absolute bottom-0 right-0 p-button-rounded p-button-success p-button-raised m-5" />
+                <Button label="Comenzar" onClick={() => goToStep1DataCollection()} style={{ background: "#43b06f" }} className="absolute bottom-0 right-0 mr-5 mb-5 p-button-rounded md:w-2 lg:w-2 w-4 p-button-raised" />
             </div>
         </div>
     )

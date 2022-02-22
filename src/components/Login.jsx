@@ -101,7 +101,7 @@ export const Login = () => {
                             {getFormErrorMessage("password")}
                             <p className='text-right font-italic opacity-100'>¿Olvidaste tu contraseña?</p>
                             <div className='flex justify-content-center align-items-center'>
-                                <Button label="Iniciar sesión" type="submit" className=" p-button-rounded col-6 p-button-raised opacity-100" />
+                                <Button label="Iniciar sesión" type="submit" style={{ background: "#43b06f" }} className=" p-button-rounded col-6 p-button-raised opacity-100" />
                             </div>
                         </form>
                     </Card>

@@ -133,7 +133,9 @@ export const Registro = () => {
                                         onChange={(e) => field.onChange(e.target.value)} toggleMask />
                                 )} />
                             {getFormErrorMessage("confirmPassword")}
-                            <Button label="Registrarte" type='submit' className="p-button-rounded p-button-success p-button-raised" />
+                            <div className='justify-content-center'>
+                                <Button label="Registrarte" type='submit' style={{ background: "#43b06f" }} className="p-button-rounded md:w-4 w-6 p-button-raised" />
+                            </div>
                         </form>
 
                     </Card>

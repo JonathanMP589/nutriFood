@@ -44,7 +44,7 @@ export const Landing = () => {
                     <h2 className="text-center"> escogerlas para comer bien y vivir genial!</h2>
                 </div>
                 <div className="flex flex-row align-items-center justify-content-center">
-                    <Button label="Accede gratis" onClick={() => goToRegister()} className="mr-8 p-button-rounded p-button-success p-button-raised" />
+                    <Button label="Accede gratis" onClick={() => goToRegister()} style={{ background: "#43b06f" }} className="mr-8 p-button-rounded p-button-raised" />
                     <Button label="Ver videos" style={{ background: "orange" }} className="p-button-rounded  p-button-raised" />
                 </div>
             </div>
