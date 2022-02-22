@@ -4,10 +4,13 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Dropdown } from 'primereact/dropdown';
 import { Controller, useForm } from 'react-hook-form';
+import { types } from '../../types/Types';
+import { useContext } from 'react';
+import { AuthContext } from '../../auth/AuthContext';
 
 
 export const Step2 = () => {
-
+    const { dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const sexoItems = [
@@ -16,7 +19,13 @@ export const Step2 = () => {
     ];
 
     const goToStep3DataCollection = (e) => {
-        console.log(e);
+        const action = {
+            type: types.register,
+            payload: {
+                ...e
+            }
+        }
+        dispatch(action);
         navigate('/data-collection-step3');
     };
 
@@ -80,7 +89,7 @@ export const Step2 = () => {
                                         onValueChange={(e) => field.onChange(e.value)} suffix=" cm" />
                                 )} />
                             {getFormErrorMessage("altura")}
-                            <div className='justify-content-center '>
+                            <div className='flex justify-content-center align-items-center'>
                                 <Button label="Siguiente" type='submit' style={{ background: "#43b06f" }} className="p-button-rounded md:w-4 w-6 p-button-raised justify-content-center align-items-center" />
                             </div>
                         </form>

@@ -31,7 +31,7 @@ export const Home = () => {
             <div className="p-3">
                 <div className='w-12 flex flex-wrap justify-content-between '>
                     <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-2' />
-                    <img  onClick={goToUserProfile} src="/assets/Perfil_foto.png" alt="Logo de iniciar sesión" className=' cursor-pointer ' style={{ right: '3%', width: "5%" }} />
+                    <img onClick={goToUserProfile} src="/assets/Perfil_foto.png" alt="Logo de iniciar sesión" className='absolute cursor-pointer z-5' style={{ right: '3%', width: "5%" }} />
                 </div>
                 <p>Selecciona un eBook</p>
                 <div className='absolute flex justify-content-evenly h-screen w-screen top-0 left-0'>

@@ -9,7 +9,7 @@ import { useContext, useRef } from 'react';
 import { types } from '../types/Types';
 import { AuthContext } from '../auth/AuthContext';
 import { Controller, useForm } from 'react-hook-form';
-//import LoginService from '../service/LoginService';
+import LoginService from '../service/LoginService';
 
 export const Registro = () => {
 
@@ -21,34 +21,36 @@ export const Registro = () => {
         navigate('/welcome');
     };
 
-    //const loginService = new LoginService();
+    const loginService = new LoginService();
 
     const registrarUsuario = (e) => {
         if (e.password === e.confirmPassword) {
-            /* let data = new URLSearchParams();
+            let data = new URLSearchParams();
             data.append('txt_nombre', e.nombres);
             data.append('txt_apellido', e.apellidos);
             data.append('txt_email', e.correo);
             data.append('txt_password', e.password);
             loginService.registroLogin(data).then(response => {
-                if (response.data[0]?.usuario_registrado === "1") { */
-            toast.current.show({
-                severity: 'success',
-                summary: 'Exito',
-                detail: 'registrado con exito'//response.data[0].mensaje
-            });
-            const action = {
-                type: types.login,
-                payload: {
-                    name: e.nombres
+                if (response.data[0]?.usuario_registrado === "1") {
+                    toast.current.show({
+                        severity: 'success',
+                        summary: 'Exito',
+                        detail: response.data[0].mensaje
+                    });
+                    const action = {
+                        type: types.login,
+                        payload: {
+                            nombre: e.nombres,
+                            apellido: e.apellidos,
+                            email: e.correo,
+                        }
+                    }
+                    dispatch(action);
+                    goToWelcome();
                 }
-            }
-            dispatch(action);
-            goToWelcome();
-            /* }
-        }).catch(error => {
-            toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error de red' });
-        }); */
+            }).catch(error => {
+                toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error de red' });
+            });
         } else {
             toast.current.show({
                 severity: 'error',

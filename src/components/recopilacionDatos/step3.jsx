@@ -3,9 +3,16 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Controller, useForm } from 'react-hook-form';
 import { MultiSelect } from 'primereact/multiselect';
+import { useContext, useRef } from 'react';
+import { AuthContext } from '../../auth/AuthContext';
+import LoginService from '../../service/LoginService';
+import { Toast } from 'primereact/toast';
+import { types } from '../../types/Types';
 
 export const Step3 = () => {
-
+    const { user, dispatch } = useContext(AuthContext);
+    const toast = useRef(null);
+    const loginService = new LoginService();
     const navigate = useNavigate();
 
     const enfermedadesItems = [
@@ -17,8 +24,34 @@ export const Step3 = () => {
     ];
 
     const goToStep3DataCollection = (e) => {
-        console.log(e);
-        navigate('/Home');
+        const data = new URLSearchParams();
+        data.append('txt_email', user.email)
+        data.append('txt_sexo', user.sexo)
+        data.append('txt_edad', user.edad)
+        data.append('txt_peso', user.peso)
+        data.append('txt_altura', user.altura)
+        data.append('str_enfermedades', JSON.stringify(e.enfermedades))
+        loginService.actualizarLogin(data).then(response => {
+            if (response.data[0]?.exito === "1") {
+                const action = {
+                    type: types.register,
+                    payload: {
+                        enfermedades: JSON.stringify(e.enfermedades),
+                    }
+                }
+                dispatch(action);
+                navigate('/Home');
+            } else {
+                toast.current.show({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: "algo salio mal"
+                });
+            }
+        }).catch(error => {
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error de red' });
+        });
+
     };
 
     const { control, formState: { errors }, handleSubmit, } = useForm();
@@ -35,6 +68,7 @@ export const Step3 = () => {
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover'
                 }}>
+            <Toast ref={toast} />
 
             <div className='flex'>
                 <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-2 absolute left-0 m-4' />

@@ -26,4 +26,16 @@ export default class LoginService {
         };
         return axios(config);
     }
+
+    actualizarLogin(data) {
+        let config = {
+            method: 'post',
+            url: 'http://lms.softhealth.com.mx/api_crud/api/control_login.php?action=update_reg_usu',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: data
+        };
+        return axios(config);
+    }
 }
