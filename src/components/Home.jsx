@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Home = () => {
+
+    const navigate = useNavigate();
 
     const [isViewModal, setIsViewModal] = useState(true);
     const renderFooter = () => <Button label="Entendido" onClick={() => setIsViewModal(false)} autoFocus style={{ background: "#43b06f" }} className="p-button-rounded md:w-4 w-6 p-button-raised" />
 
     const renderHeader = () => <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-3 absolute ' style={{ right: '37%' }} />
+
+    const goToUserProfile = () => {
+        navigate('/user-profile');
+    }
 
     return (
         <div className='h-screen w-screen' style={
@@ -22,8 +29,10 @@ export const Home = () => {
             }
         }>
             <div className="p-3">
-                <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='left-0 w-2' />
-                <img src="/assets/Perfil_foto.png" alt="Logo de iniciar sesión" className='absolute ' style={{ right: '3%', width: "5%" }} />
+                <div className='w-12 flex flex-wrap justify-content-between '>
+                    <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-2' />
+                    <img  onClick={goToUserProfile} src="/assets/Perfil_foto.png" alt="Logo de iniciar sesión" className=' cursor-pointer ' style={{ right: '3%', width: "5%" }} />
+                </div>
                 <p>Selecciona un eBook</p>
                 <div className='absolute flex justify-content-evenly h-screen w-screen top-0 left-0'>
                     <div className='w-6 flex flex-column justify-content-center align-items-center'>
