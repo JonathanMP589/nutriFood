@@ -35,7 +35,16 @@ export const Login = () => {
                 const action = {
                     type: types.login,
                     payload: {
-                        name: "nombre"
+                        idUsuario: response.data[0].id_usuario,
+                        nombre: response.data[0].vc_nombre,
+                        apellido: response.data[0].vc_apellido,
+                        email: response.data[0].vc_email,
+                        sexo: response.data[0].vc_sexo,
+                        edad: response.data[0].int_edad,
+                        peso: response.data[0].vc_peso,
+                        altura: response.data[0].vc_altura,
+                        enfermedades: response.data[0].vc_enfermedades,
+                        rol: response.data[0].vc_rol,
                     }
                 }
                 dispatch(action);

@@ -73,14 +73,14 @@ export const Step3 = () => {
             <div className='flex'>
                 <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-2 absolute left-0 m-4' />
                 <div className=' flex flex-wrap md:justify-content-evenly justify-content-center align-items-center row md:w-11 w-12 h-screen'>
-                    <img className='w-4' src="/assets/Datos_titulo_1.png" alt="Datos" />
+                    <img className='w-4' src="/assets/Datos_titulo_2.png" alt="Datos" />
                     <div className='w-7 h-full' style={{
                         background: 'url("/assets/Datos_mano.png")',
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover'
                     }}>
                         <form className="flex flex-column p-3 sm:col-2 absolute" style={{ right: "36%" }} onSubmit={handleSubmit(goToStep3DataCollection)}>
-                            <h2 className='text-center' style={{ color: "#43b06f" }}>Pregunta 2/2</h2>
+                            <h2 className='text-center mt-5' style={{ color: "#43b06f" }}>Pregunta 2/2</h2>
                             <p className='text-center' >¿padeces alguna de estas enfermedades?</p>
                             <Controller name='enfermedades' control={control} rules={{ required: 'Las enfermedades son requeridas' }}
                                 render={({ field, fieldState }) => (
