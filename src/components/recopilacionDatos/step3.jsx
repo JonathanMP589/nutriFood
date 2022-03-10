@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
 import { Controller, useForm } from 'react-hook-form';
 import { MultiSelect } from 'primereact/multiselect';
 import { useContext, useRef } from 'react';
@@ -30,6 +29,7 @@ export const Step3 = () => {
         data.append('txt_edad', user.edad)
         data.append('txt_peso', user.peso)
         data.append('txt_altura', user.altura)
+        data.append('img_usu', "")
         data.append('str_enfermedades', JSON.stringify(e.enfermedades))
         loginService.actualizarLogin(data).then(response => {
             if (response.data[0]?.exito === "1") {

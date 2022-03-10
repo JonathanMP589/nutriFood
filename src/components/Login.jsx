@@ -38,13 +38,14 @@ export const Login = () => {
                         idUsuario: response.data[0].id_usuario,
                         nombre: response.data[0].vc_nombre,
                         apellido: response.data[0].vc_apellido,
-                        email: response.data[0].vc_email,
+                        email: response.data[0].vc_emaill,
                         sexo: response.data[0].vc_sexo,
                         edad: response.data[0].int_edad,
                         peso: response.data[0].vc_peso,
                         altura: response.data[0].vc_altura,
                         enfermedades: response.data[0].vc_enfermedades,
                         rol: response.data[0].vc_rol,
+                        imgUsu: response.data[0].img_foto,
                     }
                 }
                 dispatch(action);

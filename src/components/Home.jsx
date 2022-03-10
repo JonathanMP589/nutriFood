@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
-
+import { AuthContext } from '../auth/AuthContext';
 
 export const Home = () => {
 
     const navigate = useNavigate();
-
+    const { user } = useContext(AuthContext);
     const [isViewModal, setIsViewModal] = useState(true);
-    const renderFooter = () => <Button label="Entendido" onClick={() => setIsViewModal(false)} autoFocus style={{ background: "#43b06f" }} className="p-button-rounded md:w-4 w-6 p-button-raised" />
+    const [profilePic] = useState(user?.imgUsu || null);
 
+
+    const renderFooter = () => <Button label="Entendido" onClick={() => setIsViewModal(false)} autoFocus style={{ background: "#43b06f" }} className="p-button-rounded md:w-4 w-6 p-button-raised" />
     const renderHeader = () => <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-3 absolute ' style={{ right: '37%' }} />
 
     const goToUserProfile = () => {
         navigate('/user-profile');
     }
+
+    const profilePicStyle = {
+        width: "80px",
+        height: "80px",
+        borderRadius: "140px",
+        cursor: "pointer",
+        objectFit: "cover",
+        backgroundColor: "white",
+        position: "absolute",
+        zIndex: "5",
+        right: '3%',
+    };
 
     return (
         <div className='h-screen w-screen' style={
@@ -31,7 +45,10 @@ export const Home = () => {
             <div className="p-3">
                 <div className='w-12 flex flex-wrap justify-content-between '>
                     <img src="/assets/iniciar_sesion_logo.png" alt="Logo de iniciar sesión" className='w-2' />
-                    <img onClick={goToUserProfile} src="/assets/Perfil_foto.png" alt="Logo de iniciar sesión" className='absolute cursor-pointer z-5' style={{ right: '3%', width: "5%" }} />
+                    <img onClick={() => goToUserProfile()} src={profilePic === null ? "/assets/Perfil_foto.png" : profilePic}
+                        alt="Logo de iniciar sesión"
+                        className={profilePic === null ? 'absolute cursor-pointer z-5' : ''}
+                        style={profilePic !== null ? profilePicStyle : { right: '3%', width: "5%" }} />
                 </div>
                 <p>Selecciona un eBook</p>
                 <div className='absolute flex justify-content-evenly h-screen w-screen top-0 left-0'>
