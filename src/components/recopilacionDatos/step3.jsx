@@ -32,7 +32,7 @@ export const Step3 = () => {
         data.append('img_usu', "")
         data.append('str_enfermedades', JSON.stringify(e.enfermedades))
         loginService.actualizarLogin(data).then(response => {
-            if (response.data[0]?.exito === "1") {
+            if (response.data[0]?.exitotrado === "1") {
                 const action = {
                     type: types.register,
                     payload: {
@@ -42,6 +42,7 @@ export const Step3 = () => {
                 dispatch(action);
                 navigate('/Home');
             } else {
+                console.log(response.data);
                 toast.current.show({
                     severity: 'error',
                     summary: 'Error',
